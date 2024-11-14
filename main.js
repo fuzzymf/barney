@@ -1,7 +1,7 @@
 import { Instruction } from "./instruction.js";
 import { tooltip } from "./ui.js";
 
-function handleGearClick() {
+function decode() {
   const inputBox = document.getElementById("search-input");
   const input = inputBox.value.trim();
   let instructionType;
@@ -53,31 +53,25 @@ function handleGearClick() {
     const errorContainer = document.getElementById("error-container");
     errorContainer.innerHTML = "";
     // Display results
-    decode(instructionType, input);
-  }
-}
-
-function decode(type, instruction) {
-  switch (type) {
-    case "Binary":
-      decodeBinaryInstruction(instruction);
-      break;
-    case "Hex":
-      decodeBinaryInstruction(
-        parseInt(instruction, 16).toString(2).padStart(32, "0")
-      );
-      break;
-    case "Decimal":
-      decodeBinaryInstruction(
-        parseInt(instruction).toString(2).padStart(32, "0")
-      );
-      break;
-    case "Assembly":
-      // decodeAssemblyInstruction(instruction);
-      break;
-    default:
-      // Handle invalid input
-      break;
+    switch (instructionType) {
+      case "Binary":
+        decodeBinaryInstruction(input);
+        break;
+      case "Hex":
+        decodeBinaryInstruction(
+          parseInt(input, 16).toString(2).padStart(32, "0")
+        );
+        break;
+      case "Decimal":
+        decodeBinaryInstruction(parseInt(input).toString(2).padStart(32, "0"));
+        break;
+      case "Assembly":
+        // decodeAssemblyInstruction(input);
+        break;
+      default:
+        // Handle invalid input
+        break;
+    }
   }
 }
 
@@ -124,12 +118,12 @@ const main = () => {
     });
 
     const gearIcon = document.getElementById("gear-icon");
-    gearIcon.addEventListener("click", handleGearClick);
+    gearIcon.addEventListener("click", decode);
 
     const searchInput = document.getElementById("search-input");
     searchInput.addEventListener("keydown", (event) => {
       if (event.key === "Enter") {
-        handleGearClick();
+        decode();
       }
     });
   });
