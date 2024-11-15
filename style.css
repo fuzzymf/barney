@@ -19,6 +19,23 @@
 	/* Very Light Blue */
 	--color-base3: #f7faff;
 	/* Whitish Light */
+
+
+	--color-funct7: #E6BC67;
+	/* Orange */
+	--color-rs2: #A0D2A5;
+	/* Green */
+	--color-rs1: #B0B0C8;
+	/* Blue */
+	--color-funct3: #B5EAD7;
+	/* Cyan */
+	--color-rd: #E6B8A1;
+	/* Orange */
+	--color-opcode: #8FB0D0;
+	/* Light Blue */
+	--color-hover-bg: #FFFF99;
+	/* Yellow */
+
 }
 
 /* Light colorscheme by default */
