@@ -1,3 +1,5 @@
+import { getColor } from "./colorCoder.js";
+
 export const tooltip = createTooltip();
 
 function createTooltip() {
@@ -13,7 +15,9 @@ window.showTooltip = function (_event, text) {
   tooltip.textContent = text;
   tooltip.style.display = "block";
   tooltip.className = "binary-tooltip";
-  document.getElementById(text).style.backgroundColor = "#FFFF99";
+  // --color-hover-bg
+  const color = getColor("--color-hover-bg");
+  document.getElementById(text).style.backgroundColor = color;
 };
 
 window.hideTooltip = function (text) {

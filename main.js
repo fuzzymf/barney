@@ -9,9 +9,11 @@ function decode() {
   if (/^[01]+$/.test(input)) {
     instructionType = "Binary";
   } else if (/^[0-9A-Fa-f]+$/.test(input)) {
-    instructionType = "Hex";
+    // instructionType = "Hex";
+    instructionType = "Invalid";
   } else if (/^\d+$/.test(input)) {
-    instructionType = "Decimal";
+    // instructionType = "Decimal";
+    instructionType = "Invalid";
   } else if (/^[a-zA-Z]+$/.test(input)) {
     // instructionType = "Assembly";
     instructionType = "Invalid";
