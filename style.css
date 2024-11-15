@@ -272,7 +272,7 @@ body {
 
 	/* Adds 1fr spacing on top and bottom that shrinks to 0px on smaller
      * viewports. */
-	grid-template-rows: minmax(0px, 2fr) 5fr minmax(0px, 2fr);
+	grid-template-rows: minmax(0px, 2fr) 5fr minmax(0px, 4fr);
 }
 
 .rows-container {
@@ -326,6 +326,18 @@ body {
 	display: none;
 }
 
+
+@media (min-width: 768px) and (max-width: 1024px) {
+	#results-inner-container {
+		height: 100%;
+
+		display: grid;
+		grid-auto-flow: row;
+
+		grid-template-rows: 0.15fr 0.2fr 0.2fr;
+	}
+}
+
 /* Break point for tablets and smaller*/
 @media (max-width: 768px) {
 
@@ -339,7 +351,7 @@ body {
 	.result-row {
 		height: 3ch;
 		place-content: center start;
-		padding: 0 15vw;
+		padding: 0 5vw;
 	}
 
 	/* Bigger height for the row of binary data */
@@ -359,7 +371,7 @@ body {
 	}
 
 	#error-row {
-		padding: 0 15vw;
+		padding: 0 5vw;
 	}
 
 	#binary-data {
