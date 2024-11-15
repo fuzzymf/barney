@@ -20,22 +20,6 @@
 	--color-base3: #f7faff;
 	/* Whitish Light */
 
-
-	--color-funct7: #E6BC67;
-	/* Orange */
-	--color-rs2: #A0D2A5;
-	/* Green */
-	--color-rs1: #B0B0C8;
-	/* Blue */
-	--color-funct3: #B5EAD7;
-	/* Cyan */
-	--color-rd: #E6B8A1;
-	/* Orange */
-	--color-opcode: #8FB0D0;
-	/* Light Blue */
-	--color-hover-bg: #FFFF99;
-	/* Yellow */
-
 }
 
 /* Light colorscheme by default */
@@ -44,8 +28,24 @@
 	--color-bg: var(--color-base3);
 	--color-hl: var(--color-base2);
 	--color-em: var(--color-base01);
-	--color-co: var(--color-base1);
+	--color-co: var(--color-base02);
+	/* Updated for better readability */
 	--color-fd: var(--color-base2);
+
+	--color-funct7: #E6A856;
+	/* Warmer orange */
+	--color-rs2: #8FB98A;
+	/* Deeper pastel green */
+	--color-rs1: #9494B8;
+	/* Deeper pastel blue */
+	--color-funct3: #87C6B3;
+	/* Slightly darker pastel cyan */
+	--color-rd: #E69A84;
+	/* Warmer pastel orange */
+	--color-opcode: #7EA6C0;
+	/* Deeper pastel light blue */
+	--color-hover-bg: #FFF8A3;
+	/* Richer pastel yellow */
 }
 
 /* Dark colorscheme */
@@ -55,8 +55,26 @@
 		--color-bg: var(--color-base03);
 		--color-hl: var(--color-base02);
 		--color-em: var(--color-base1);
-		--color-co: var(--color-base01);
+		--color-co: var(--color-base3);
+		/* Updated for better readability */
 		--color-fd: var(--color-base01);
+
+
+		--color-funct7: #FFC891;
+		/* Soft Orange */
+		--color-rs2: #CBE3CB;
+		/* Soft Green */
+		--color-rs1: #D6D6E5;
+		/* Soft Blue */
+		--color-funct3: #E4F6EE;
+		/* Soft Cyan */
+		--color-rd: #FFDAC5;
+		/* Soft Orange */
+		--color-opcode: #B0D6EE;
+		/* Soft Light Blue */
+		--color-hover-bg: #FFF4CC;
+		/* Soft Yellow */
+
 	}
 }
 
@@ -165,6 +183,11 @@ body {
 	font-size: inherit;
 	color: inherit;
 	font-family: inherit;
+}
+
+#search-input,
+#search-placeholder {
+	font-size: 16px;
 }
 
 #search-input:focus-visible {

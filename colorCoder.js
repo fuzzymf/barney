@@ -1,4 +1,4 @@
-function getColor(variable) {
+export function getColor(variable) {
   return getComputedStyle(document.documentElement).getPropertyValue(variable);
 }
 

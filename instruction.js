@@ -4,6 +4,7 @@ import {
   colorCodeS,
   colorCodeU,
   colorCodeJ,
+  getColor,
 } from "./colorCoder.js";
 
 export class Instruction {
@@ -374,16 +375,13 @@ export class Instruction {
     //in the case of a R-type instruction (ADD, SUB, SLL, SLT, SLTU, XOR, SRL, SRA, OR, AND)
     switch (this.format) {
       case "R":
-        // first element is the instruction type- relates to the opcode
-        // second element is the rd register
-        // third element is the rs1 register
-        // fourth element is the rs2 register
+        // Color and ID map for "R" format
         colorMap = {
-          1: "#8FB0D0",
-          2: "#E6B8A1",
-          3: "#B0B0C8",
-          4: "#A0D2A5",
-          5: "#E6BC67",
+          1: getColor("--color-opcode"),
+          2: getColor("--color-rd"),
+          3: getColor("--color-rs1"),
+          4: getColor("--color-rs2"),
+          5: getColor("--color-funct7"),
         };
 
         idMap = {
@@ -400,17 +398,14 @@ export class Instruction {
         }
 
         return formattedAssembly;
-      case "I":
-        // first element is the instruction type- relates to the opcode
-        // second element is the rd register
-        // third element is the rs1 register
-        // fourth element is the immediate value
 
+      case "I":
+        // Color and ID map for "I" format
         colorMap = {
-          1: "#8FB0D0",
-          2: "#E6B8A1",
-          3: "#B0B0C8",
-          4: "#E6BC67",
+          1: getColor("--color-opcode"),
+          2: getColor("--color-rd"),
+          3: getColor("--color-rs1"),
+          4: getColor("--color-funct7"),
         };
 
         idMap = {
@@ -425,17 +420,14 @@ export class Instruction {
            style="color: ${colorMap[i + 1]};">${splitAssembly[i]}</span> `;
         }
         return formattedAssembly;
-      case "S":
-        // first element is the instruction type- relates to the opcode
-        // second element is the rs2 register
-        // third element is the immediate value
-        // fourth element is the rs1 register
 
+      case "S":
+        // Color and ID map for "S" format
         colorMap = {
-          1: "#8FB0D0",
-          2: "#A0D2A5",
-          3: "#E6BC67",
-          4: "#B0B0C8",
+          1: getColor("--color-opcode"),
+          2: getColor("--color-rs2"),
+          3: getColor("--color-funct7"),
+          4: getColor("--color-rs1"),
         };
 
         idMap = {
@@ -452,16 +444,12 @@ export class Instruction {
         return formattedAssembly;
 
       case "B":
-        // first element is the instruction type- relates to the opcode
-        // second element is the rs1 register
-        // third element is the rs2 register
-        // fourth element is the immediate value
-
+        // Color and ID map for "B" format
         colorMap = {
-          1: "#8FB0D0",
-          2: "#B0B0C8",
-          3: "#A0D2A5",
-          4: "#E6BC67",
+          1: getColor("--color-opcode"),
+          2: getColor("--color-rs1"),
+          3: getColor("--color-rs2"),
+          4: getColor("--color-funct7"),
         };
 
         idMap = {
@@ -478,14 +466,11 @@ export class Instruction {
         return formattedAssembly;
 
       case "U":
-        // first element is the instruction type- relates to the opcode
-        // second element is the rd register
-        // third element is the immediate value
-
+        // Color and ID map for "U" format
         colorMap = {
-          1: "#8FB0D0",
-          2: "#E6B8A1",
-          3: "#E6BC67",
+          1: getColor("--color-opcode"),
+          2: getColor("--color-rd"),
+          3: getColor("--color-funct7"),
         };
 
         idMap = {
@@ -501,14 +486,11 @@ export class Instruction {
         return formattedAssembly;
 
       case "J":
-        // first element is the instruction type- relates to the opcode
-        // second element is the rd register
-        // third element is the immediate value
-
+        // Color and ID map for "J" format
         colorMap = {
-          1: "#8FB0D0",
-          2: "#E6B8A1",
-          3: "#E6BC67",
+          1: getColor("--color-opcode"),
+          2: getColor("--color-rd"),
+          3: getColor("--color-funct7"),
         };
 
         idMap = {
@@ -519,7 +501,7 @@ export class Instruction {
 
         for (let i = 0; i < splitAssembly.length; i++) {
           formattedAssembly += `<span id="${idMap[i + 1]}"
-          style="color: ${colorMap[i + 1]};">${splitAssembly[i]}</span> `;
+           style="color: ${colorMap[i + 1]};">${splitAssembly[i]}</span> `;
         }
         return formattedAssembly;
 

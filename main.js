@@ -66,11 +66,9 @@ function decode() {
         decodeBinaryInstruction(parseInt(input).toString(2).padStart(32, "0"));
         break;
       case "Assembly":
-        // decodeAssemblyInstruction(input);
-        break;
+        throw new Error("Assembly decoding not implemented yet");
       default:
-        // Handle invalid input
-        break;
+        throw new Error("Invalid instruction type");
     }
   }
 }
@@ -91,42 +89,48 @@ const decodeBinaryInstruction = (instruction) => {
 };
 
 const main = () => {
-  // Move tooltip to follow the cursor position
-  document.addEventListener("mousemove", (event) => {
-    tooltip.style.left = `${event.pageX + 10}px`;
-    tooltip.style.top = `${event.pageY + 10}px`;
-  });
+  try {
+    // Move tooltip to follow the cursor position
+    document.addEventListener("mousemove", (event) => {
+      tooltip.style.left = `${event.pageX + 10}px`;
+      tooltip.style.top = `${event.pageY + 10}px`;
+    });
 
-  document.addEventListener("DOMContentLoaded", () => {
-    // implement copying mechanism:
-    const copyButtons = document.querySelectorAll(".copy-button");
+    document.addEventListener("DOMContentLoaded", () => {
+      // implement copying mechanism:
+      const copyButtons = document.querySelectorAll(".copy-button");
 
-    copyButtons.forEach((button) => {
-      button.addEventListener("click", (_) => {
-        const dataId = button.id.replace("-copy", "-data");
-        const dataElement = document.getElementById(dataId);
-        const textToCopy = dataElement.textContent || dataElement.innerText;
+      copyButtons.forEach((button) => {
+        button.addEventListener("click", (_) => {
+          const dataId = button.id.replace("-copy", "-data");
+          const dataElement = document.getElementById(dataId);
+          const textToCopy = dataElement.textContent || dataElement.innerText;
 
-        navigator.clipboard.writeText(textToCopy).then(() => {
-          const tooltip = button.querySelector(".button-tooltip");
-          tooltip.textContent = "Copied!";
-          setTimeout(() => {
-            tooltip.textContent = "Copy";
-          }, 2000);
+          navigator.clipboard.writeText(textToCopy).then(() => {
+            const tooltip = button.querySelector(".button-tooltip");
+            tooltip.textContent = "Copied!";
+            setTimeout(() => {
+              tooltip.textContent = "Copy";
+            }, 2000);
+          });
         });
       });
-    });
 
-    const gearIcon = document.getElementById("gear-icon");
-    gearIcon.addEventListener("click", decode);
+      const gearIcon = document.getElementById("gear-icon");
+      gearIcon.addEventListener("click", decode);
 
-    const searchInput = document.getElementById("search-input");
-    searchInput.addEventListener("keydown", (event) => {
-      if (event.key === "Enter") {
-        decode();
-      }
+      const searchInput = document.getElementById("search-input");
+      searchInput.addEventListener("keydown", (event) => {
+        if (event.key === "Enter") {
+          decode();
+        }
+      });
     });
-  });
+  } catch (error) {
+    console.error("An error occurred:", error);
+    document.getElementById("error-container").innerText =
+      error.message || "An error occurred";
+  }
 };
 
 main();
